@@ -1,15 +1,19 @@
-import {makeAutoObservable} from 'mobx';
-import axios from 'axios';
+import {makeAutoObservable} from 'mobx'
+import axios from 'axios'
+import {Category} from '../models/category'
 
 class Categories {
-  categories: string[] = [];
+  categories: Category[] = [] as Category[]
 
   constructor() {
     makeAutoObservable(this)
   }
 
   setCategories(categories: string[]) {
-    this.categories = categories
+    this.categories = categories.map((category, index) => ({
+      id: index,
+      title: category
+    }))
   }
 
   fetchCategories() {
@@ -19,4 +23,4 @@ class Categories {
   }
 }
 
-export default new Categories();
+export default new Categories()

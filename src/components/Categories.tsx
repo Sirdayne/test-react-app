@@ -11,7 +11,7 @@ const Categories = observer(() => {
       <div className="app-main__head">
         <h1>Courses</h1>
         <div className="app-main__navigation">
-          {categories.categories.map((category) => <span className="app-main__navigation__item">{category}</span>)}
+          {categories.categories.map((category) => <span className="app-main__navigation__item" key={category.id}>{category.title}</span>)}
         </div>
       </div>
   );

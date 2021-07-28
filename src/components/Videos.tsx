@@ -15,7 +15,7 @@ const Videos = observer(() => {
               <div className="app-main__content__video__title">{video.title}</div>
               <div className="app-main__content__video__sub">24 lessons</div>
               <img src={playLogo} className="app-main__content__video__play-logo" alt="play" />
-              <div className="app-main__content__video__duration">{video.time} min</div>
+              <div className="app-main__content__video__duration">{video.time} min {video.id}</div>
             </div>
         )}
       </div>
