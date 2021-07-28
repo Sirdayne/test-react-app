@@ -1,1 +1,1 @@
-test react app -> React + MobX + Sass
+Test React App with MobX + Sass
