@@ -16,7 +16,6 @@ function AppAside() {
         <CustomerLogo />
       </div>
     </aside>
-
   );
 }
 
