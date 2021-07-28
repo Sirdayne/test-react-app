@@ -15,6 +15,7 @@
     transition: .3s linear
 
     svg
+      width: 48px
       cursor: pointer
       fill: #E1AA98
       transition: .3s linear
@@ -24,9 +25,15 @@
       svg
         fill: #8964D7
 
-    img
-      width: 48px
-
 @media screen and (max-width: $tablet-width)
   .app-aside
     max-width: 100px
+
+@media screen and (max-width: $mobile-width)
+  .app-aside
+    max-width: 50px
+
+    &__nav
+      margin-bottom: 32px
+      svg
+        width: 18px
