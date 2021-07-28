@@ -1,0 +1,157 @@
+.app
+  display: flex
+  background: #FFF4EE
+  font-family: 'Montserrat', sans-serif
+
+  &-main
+    width: 100%
+    padding: 64px 99px
+
+    &__head
+      display: flex
+      justify-content: space-between
+      width: 100%
+
+      h1
+        font-weight: normal
+        font-size: 48px
+        line-height: 59px
+        color: #000
+        margin: 0
+
+    &__navigation
+      margin-top: 26px
+
+      &__item
+        position: relative
+        font-weight: bold
+        font-size: 24px
+        line-height: 29px
+        color: #CBB1A2
+        cursor: pointer
+        transition: .3s linear
+
+        &::after
+          content: ''
+          position: absolute
+          bottom: -13px
+          left: 37%
+          width: 0
+          height: 4px
+          background: #6749A5
+          transition: .3s linear
+
+        &_active, &:hover
+          color: #6749A5
+
+          &::after
+            width: 26%
+
+        & + .app-main__navigation__item
+          margin-left: 48px
+
+
+    &__content
+      margin-top: 71px
+      width: 100%
+
+      &__video
+        position: relative
+        height: 544px
+        width: 100%
+        background: url('../img/banana.png')
+        background-size: cover
+        border-radius: 24px
+
+        &__title
+          position: absolute
+          top: 42px
+          left: 42px
+          color: #fff
+          font-style: normal
+          font-weight: 500
+          font-size: 24px
+          line-height: 29px
+
+        &__sub
+          position: absolute
+          top: 85px
+          left: 42px
+          color: #fff
+          font-style: normal
+          font-weight: 500
+          font-size: 16px
+          line-height: 20px
+
+        &__duration
+          position: absolute
+          top: 42px
+          right: 96px
+          color: #fff
+          font-style: normal
+          font-weight: 500
+          font-size: 24px
+          line-height: 29px
+
+        &__play-logo
+          position: absolute
+          bottom: 64px
+          left: 42px
+          width: 84px
+          height: 75px
+          cursor: pointer
+
+        &_building
+          background: url('../img/building.png')
+          background-size: cover
+
+        & + .app-main__content__video
+          margin-top: 60px
+
+@media screen and (max-width: 1224px)
+  .app-main
+    padding: 79px 21px
+
+    &__head
+      display: block
+
+      h1
+        margin-left: 5px
+
+    &__navigation
+      margin-left: 6px
+      margin-top: 16px
+
+      &__item
+
+        & + .app-main__navigation__item
+          margin-left: 35px
+
+    &__content
+      margin-top: 37px
+      width: 100%
+
+      &__video
+        height: 274px
+
+        &__title
+          top: 21px
+          left: 21px
+
+        &__sub
+          top: 51px
+          left: 21px
+
+        &__duration
+          top: 21px
+          right: 42px
+
+        &__play-logo
+          bottom: 41px
+          left: 19px
+          width: 58px
+          height: 54px
+
+        & + .app-main__content__video
+          margin-top: 64px
+

@@ -1,0 +1,32 @@
+.app-aside
+  background: #FFE4D6
+  width: 100%
+  max-width: 160px
+  box-sizing: border-box
+  padding: 127px 0
+
+  &__nav
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    margin-bottom: 72px
+    border-left: 3px solid rgba(0,0,0,0)
+    transition: .3s linear
+
+    svg
+      cursor: pointer
+      fill: #E1AA98
+      transition: .3s linear
+
+    &_active, &:hover
+      border-left: 3px solid #8964D7
+      svg
+        fill: #8964D7
+
+    img
+      width: 48px
+
+@media screen and (max-width: 1224px)
+  .app-aside
+    max-width: 100px
