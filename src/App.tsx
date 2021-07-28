@@ -5,30 +5,38 @@ import playLogo from './img/play.png';
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 
-export interface VideoI {
+export interface Minute {
   id: number;
   time: number;
+}
+
+export interface Video {
+  id: number;
+  time: number;
+  title: string;
 }
 
 function App() {
 
   const [categories, setCategories] = useState([]);
-  const [minutes, setMinutes] = useState<VideoI[]>([]);
-  const [blocks, setBlocks] = useState([]);
+  const [videos, setVideos] = useState<Video[]>([]);
 
   useEffect(() => {
     axios.get('https://rpback.com/api/games/test_categories?project_id=2').then(({ data }) => {
       setCategories(data.categories);
     })
 
-    axios.get('https://rpback.com/api/games/test_minutes?project_id=2').then(({ data }) => {
-      setMinutes(data.minutes);
+    Promise.all([
+      axios.get('https://rpback.com/api/games/test_minutes?project_id=2'),
+      axios.get('https://rpback.com/api/games/test_blocks?project_id=2')
+    ]).then(values => {
+      const tempVideos: Video[] = [];
+      values[0].data.minutes.forEach((minute: Minute, index: number) => {
+        tempVideos.push({...minute, title: values[1].data.blocks[index]})
+      })
+      setVideos(tempVideos);
     })
 
-    axios.get('https://rpback.com/api/games/test_blocks?project_id=2').then(({ data }) => {
-      setBlocks(data.blocks);
-      console.log(blocks);
-    })
   }, [])
 
   return (
@@ -44,21 +52,14 @@ function App() {
           </div>
 
           <div className="app-main__content">
-            {minutes.map((minute) =>
-                <div className="app-main__content__video" key={minute.id}>
-                  <div className="app-main__content__video__title">Illustration</div>
+            {videos.map((video) =>
+                <div className="app-main__content__video" key={video.id}>
+                  <div className="app-main__content__video__title">{video.title}</div>
                   <div className="app-main__content__video__sub">24 lessons</div>
                   <img src={playLogo} className="app-main__content__video__play-logo" alt="play" />
-                  <div className="app-main__content__video__duration">{minute.time} min</div>
+                  <div className="app-main__content__video__duration">{video.time} min</div>
                 </div>
             )}
-
-            <div className="app-main__content__video app-main__content__video_building">
-              <div className="app-main__content__video__title">Graphic design</div>
-              <div className="app-main__content__video__sub">30 lessons</div>
-              <img src={playLogo} className="app-main__content__video__play-logo" alt="play" />
-              <div className="app-main__content__video__duration">236 min</div>
-            </div>
           </div>
         </main>
     </div>
